@@ -1,1 +1,13 @@
 <h1>Restaurants</h1>
+<%= link_to "Submit restaurant", new_restaurant_path %>
+<% @restaurants.each do |restaurant| %>
+  <h3><%= restaurant.name %></h3>
+  <p><%= restaurant.address %></p>
+  <p><%= restaurant.phone_number %></p>
+  <p><%= restaurant.category %></p>
+  <p><%= (restaurant.reviews.reduce(0) { |acc, review| acc + review.rating } / restaurant.reviews.count.to_f).round(2) %></p>
+  <p><%= link_to "Check it out", restaurant_path(restaurant) %></p>
+  <p><%= link_to "Edit listing", edit_restaurant_path(restaurant) %></p>
+  <p><%= link_to "Delete it!", restaurant_path(restaurant), method: :delete %></p>
+  <p><%= link_to "Leave review!", new_restaurant_review_path(restaurant) %></p>
+<% end %>

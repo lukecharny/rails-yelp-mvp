@@ -16,6 +16,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  # def average_rating
+  #   self.class.average(:rating)
+  # end
+
   private
 
   def set_restaurant
